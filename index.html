@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard de Clima</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script type="module" src="logica/main.js"></script>
+</head>
+<body>
+  <header class="cabecera">
+    <h1 class="encabezado">Dashboard de Clima</h1>
+    <p>Consulta el clima actual de cualquier ciudad</p>
+  </header>
+  <main class="principal">
+    <form id="formulario-busqueda">
+      <input id="entrada-ciudad" type="text" placeholder="Ej: Bogota, Madrid, Tokyo..." autocomplete="off" required />
+      <button id="boton-buscar" type="submit">Buscar</button>
+    </form>
+
+    <!-- Pantalla de carga: oculta por defecto, visible al buscar -->
+    <div id="pantalla-carga" class="pantalla-carga">
+      <div class="spinner"></div>
+      <p id="carga-texto">Buscando ciudad...</p>
+      <p id="carga-subtexto">Por favor espera</p>
+    </div>
+
+    <div id="estado-vacio" class="mensaje">
+      <p>Escribe una ciudad para ver su clima</p>
+    </div>
+
+    <div id="estado-error" class="mensaje error oculto">
+      <p id="mensaje-error"></p>
+      <button id="boton-reintentar">Reintentar</button>
+    </div>
+
+    <section id="seccion-resultado" class="oculto">
+
+      <div class="tarjeta-ciudad">
+        <h2 id="nombre-ciudad"></h2>
+        <p id="coordenadas-ciudad"></p>
+        <p id="descripcion-estado"></p>
+      </div>
+
+      <div class="cuadricula">
+        <div class="tarjeta">
+          <p class="etiqueta">Temperatura actual</p>
+          <p class="valor" id="valor-temperatura"></p>
+          <p class="unidad">grados C</p>
+          <p class="detalle" id="sensacion-termica"></p>
+        </div>
+        <div class="tarjeta">
+          <p class="etiqueta">Velocidad del viento</p>
+          <p class="valor" id="valor-viento"></p>
+          <p class="unidad">km/h</p>
+        </div>
+        <div class="tarjeta">
+          <p class="etiqueta">Hora de la medicion</p>
+          <p class="valor" id="valor-hora"></p>
+          <p class="detalle" id="valor-fecha"></p>
+        </div>
+        <div class="tarjeta">
+          <p class="etiqueta">Codigo WMO</p>
+          <p class="valor" id="valor-codigo"></p>
+          <p class="detalle" id="descripcion-codigo"></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie-pagina">
+    <p>Datos provistos por <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> - Sin API Key
+      - Gratuito</p>
+  </footer>
+
+</body>
+
+</html>

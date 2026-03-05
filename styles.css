@@ -1,0 +1,355 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f4f8;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: #e8741a;
+}
+
+/* Cabecera */
+.cabecera {
+  background: red;
+  color: white;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.cabecera h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  justify-content: center;
+}
+
+.cabecera p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+@media (min-width: 600px) {
+  .cabecera {
+    padding: 2rem 1.5rem;
+  }
+
+  .cabecera h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .cabecera h1 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Contenedor principal */
+.principal {
+  flex: 1;
+  padding: 1.25rem 1rem;
+}
+
+@media (min-width: 600px) {
+  .principal {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .principal {
+    max-width: 960px;
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .principal {
+    max-width: 1100px;
+  }
+}
+
+/* Formulario */
+#formulario-busqueda {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+#entrada-ciudad {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#entrada-ciudad:focus {
+  border-color: #ff0000;
+  box-shadow: 0 0 0 3px rgba(232, 116, 26, 0.15);
+}
+
+#boton-buscar {
+  width: 100%;
+  padding: 0.75rem;
+  background: #e8741a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#boton-buscar:hover {
+  background: #b05510;
+}
+
+#boton-buscar:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+@media (min-width: 600px) {
+  #formulario-busqueda {
+    flex-direction: row;
+  }
+
+  #boton-buscar {
+    width: auto;
+    padding: 0.75rem 1.75rem;
+    white-space: nowrap;
+  }
+}
+
+/* Clases de estado */
+.oculto {
+  display: none !important;
+}
+
+.mensaje {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #666;
+}
+
+.mensaje.error {
+  color: #c0392b;
+}
+
+.mensaje.error p {
+  margin-bottom: 1rem;
+}
+
+#boton-reintentar {
+  padding: 0.6rem 1.4rem;
+  border: 1px solid #c0392b;
+  background: transparent;
+  color: #c0392b;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+#boton-reintentar:hover {
+  background: #c0392b;
+  color: white;
+}
+
+/* Pantalla de carga: oculta con visibility para poder animar */
+.pantalla-carga {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  visibility: hidden;
+}
+
+.pantalla-carga.visible {
+
+  visibility: visible;
+}
+
+#carga-texto {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+#carga-subtexto {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ddd;
+  border-top-color: #e8741a;
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Tarjeta de ciudad */
+.tarjeta-ciudad {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-ciudad h2 {
+  font-size: 1.5rem;
+  color: #1a1a2e;
+}
+
+#coordenadas-ciudad {
+  font-size: 0.78rem;
+  color: #999;
+  margin-top: 3px;
+}
+
+#descripcion-estado {
+  font-size: 1rem;
+  color: #555;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+@media (min-width: 600px) {
+  .tarjeta-ciudad {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+  }
+
+  .tarjeta-ciudad h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .tarjeta-ciudad h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Cuadricula de datos
+   Movil: 1 col | Tablet: 2 col | Escritorio: 4 col */
+.cuadricula {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 600px) {
+  .cuadricula {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .cuadricula {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.tarjeta {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.etiqueta {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.valor {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e8741a;
+  line-height: 1.1;
+}
+
+.unidad {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.detalle {
+  font-size: 0.78rem;
+  color: #aaa;
+  margin-top: 2px;
+}
+
+@media (min-width: 900px) {
+  .valor {
+    font-size: 2.4rem;
+  }
+}
+.tarjeta-proyeccion h3 {
+  font-size: 1rem;
+  color: #1a1a2e;
+  margin-bottom: 0.3rem;
+}
+
+.subtitulo {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.nota-fuente {
+  font-size: 0.68rem;
+  color: #ccc;
+  text-align: right;
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 600px) {
+  .tarjeta-proyeccion {
+    padding: 1.5rem 2rem;
+  }
+}
+
+/* Pie de pagina */
+.pie-pagina {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.78rem;
+  color: #aaa;
+  border-top: 1px solid #e0e0e0;
+}

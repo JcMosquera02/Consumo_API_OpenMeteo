@@ -78,7 +78,7 @@ export const renderizarClima = (ciudad, climaActual, proyeccion) => {
     document.getElementById("seccion-resultado").classList.remove("oculto");
 };
 
-// Dibuja el grafico de proyeccion con Chart.js
+// Dibuja el grafico de proyeccion con Chart.js s
 const renderizarGrafico = (datosDiarios) => {
     if (graficoActivo) { graficoActivo.destroy(); graficoActivo = null; }
 

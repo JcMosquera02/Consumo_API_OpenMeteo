@@ -10,7 +10,7 @@ const cargaSubtexto      = document.getElementById("carga-subtexto");
 
 let ultimaBusqueda = "";
 
-// Espera un numero de milisegundos antes de continuar
+// Espera un numero de milisegundos antes de continua
 const esperar = (ms) => new Promise((resolver) => setTimeout(resolver, ms));
 
 const buscarCiudad = async (nombreCiudad) => {
